@@ -1,6 +1,4 @@
 ﻿@page "/akrihw"
-@attribute [StreamRendering(true)]
-@attribute [OutputCache(Duration = 5)]
 
 @inject AkriHelloWorldClient akriClient
 
@@ -10,20 +8,20 @@
 
 <p>This component demonstrates showing data loaded from a backend MQTT API service.</p>
 
-@if (forecasts == null)
+@if (helloMessage == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    @forecasts
+    @helloMessage
 }
 
 @code {
-    private string? forecasts;
+    private string? helloMessage;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await akriClient.HiRido();
+        helloMessage = await akriClient.HiRido();
     }
 }

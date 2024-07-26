@@ -10,14 +10,13 @@ internal class HelloWorldService(MqttSessionClient mqttClient, ILogger<HelloWorl
     int commandsExecuted = 0;
     public override async Task<ExtendedResponse<HelloCommandResponse>> HelloAsync(HelloCommandRequest request, CommandRequestMetadata requestMetadata, CancellationToken cancellationToken)
     {
-        commandsExecuted++;
-        await SendTelemetryAsync(new CommandsExecutedTelemetry { CommandsExecuted = commandsExecuted }, null!, MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce, null, cancellationToken);
+        // await SendTelemetryAsync(new CommandsExecutedTelemetry { CommandsExecuted = commandsExecuted++ }, null!, MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce, null, cancellationToken);
         logger.LogInformation($"Received Hello request: {request.HelloRequest}");
         return new ExtendedResponse<HelloCommandResponse> 
                 { 
                     Response = new HelloCommandResponse 
                     { 
-                        HelloResponse = $"Hello {request.HelloRequest}!" 
+                        HelloResponse = $"Hello, Hola {request.HelloRequest} at {DateTime.UtcNow.ToString("O")  }!" 
                     } 
             };
     }

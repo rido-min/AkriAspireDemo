@@ -1,5 +1,8 @@
-﻿@page "/counter"
+﻿@page "/rpccounter"
+
 @rendermode InteractiveServer
+
+@inject CounterClient CounterClient
 
 <PageTitle>Rpc Counter</PageTitle>
 
@@ -7,13 +10,23 @@
 
 <p role="status">Rpc Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="IncrementRpcCount">Click me</button>
 
 @code {
     private int currentCount = 0;
 
-    private void IncrementCount()
+    protected override async Task OnInitializedAsync()
     {
-        currentCount++;
+        if (currentCount == 0)
+        {
+            var resp = await CounterClient.ReadCounterAsync("AkriAspireDemo.AkriHelloWorld");
+            currentCount = resp.CounterResponse;
+        }
+    }
+
+    private async void IncrementRpcCount()
+    {
+        var incResp = await CounterClient.IncrementAsync("AkriAspireDemo.AkriHelloWorld");
+        currentCount = incResp.CounterResponse;
     }
 }

@@ -1,4 +1,4 @@
-namespace AkriAspireDemo.AkriHelloWorld
+namespace AkriAspireDemo
 {
     public class EmptyJson
     {

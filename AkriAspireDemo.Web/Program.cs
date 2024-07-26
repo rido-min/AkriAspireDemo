@@ -21,8 +21,10 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
         client.BaseAddress = new("https+http://apiservice");
     });
 
-builder.Services.AddTransient<AkriHelloWorldClient>();
-builder.Services.AddHostedService<MqttInitService>();
+builder.Services
+    .AddTransient<AkriHelloWorldClient>()
+    .AddTransient<CounterClient>()
+    .AddHostedService<MqttInitService>();
 
 var app = builder.Build();
 

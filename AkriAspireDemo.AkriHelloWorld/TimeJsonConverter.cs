@@ -1,4 +1,4 @@
-namespace AkriAspireDemo.AkriHelloWorld
+namespace AkriAspireDemo
 {
     using System;
     using System.Globalization;

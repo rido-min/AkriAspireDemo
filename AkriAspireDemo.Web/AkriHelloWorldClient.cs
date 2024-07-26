@@ -14,8 +14,10 @@ namespace AkriAspireDemo.Web
 
         public async Task<string> HiRido()
         {
-            var res = await HelloAsync("AkriAspireDemo.AkriHelloWorld", new HelloCommandRequest() { HelloRequest = "pepito" });
+            var res = await HelloAsync("AkriAspireDemo.AkriHelloWorld", new HelloCommandRequest() { HelloRequest = "Rido" });
             return res.HelloResponse;
         }
+
+
     }
 }

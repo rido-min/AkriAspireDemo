@@ -15,6 +15,9 @@ public class Worker(MqttSessionClient mqttClient, IServiceProvider provider, ILo
         HelloWorldService service = provider.GetService<HelloWorldService>()!;
         await service.StartAsync(null, stoppingToken);
 
+        CounterService counterService = provider.GetService<CounterService>()!;
+        await counterService.StartAsync(null, stoppingToken);
+
         //while (!stoppingToken.IsCancellationRequested)
         //{
         //    await client.HelloAsync(mqttClient.ClientId, new HelloCommandRequest { HelloRequest = "World" }, null, null, stoppingToken);
