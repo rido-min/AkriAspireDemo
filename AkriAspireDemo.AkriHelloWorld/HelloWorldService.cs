@@ -8,16 +8,16 @@ namespace AkriAspireDemo.AkriHelloWorld;
 internal class HelloWorldService(MqttSessionClient mqttClient, ILogger<HelloWorldService> logger) : HelloWorld.Service(mqttClient)
 {
     int commandsExecuted = 0;
-    public override async Task<ExtendedResponse<HelloCommandResponse>> HelloAsync(HelloCommandRequest request, CommandRequestMetadata requestMetadata, CancellationToken cancellationToken)
+    public override Task<ExtendedResponse<HelloCommandResponse>> HelloAsync(HelloCommandRequest request, CommandRequestMetadata requestMetadata, CancellationToken cancellationToken)
     {
         // await SendTelemetryAsync(new CommandsExecutedTelemetry { CommandsExecuted = commandsExecuted++ }, null!, MQTTnet.Protocol.MqttQualityOfServiceLevel.AtLeastOnce, null, cancellationToken);
         logger.LogInformation($"Received Hello request: {request.HelloRequest}");
-        return new ExtendedResponse<HelloCommandResponse> 
+        return Task.FromResult(new ExtendedResponse<HelloCommandResponse> 
                 { 
                     Response = new HelloCommandResponse 
                     { 
                         HelloResponse = $"Hello, Hola {request.HelloRequest} at {DateTime.UtcNow.ToString("O")  }!" 
                     } 
-            };
+            });
     }
 }
