@@ -1,8 +1,9 @@
 ﻿using Akri.Mqtt.Session;
+using AkriAspireDemo.AkriHelloWorld;
 using Microsoft.Extensions.Logging.Configuration;
 using System.Diagnostics;
 
-namespace AkriAspireDemo.RpcServer;
+namespace AkriAspireDemo.Web;
 
 internal class MqttSessionClientFactoryProvider
 {

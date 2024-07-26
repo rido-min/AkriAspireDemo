@@ -1,10 +1,10 @@
-using AkriAspireDemo.RpcServer;
+using AkriAspireDemo.AkriHelloWorld;
 
 HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 builder.Services
     .AddSingleton(MqttSessionClientFactoryProvider.MqttSessionClientFactory)
-    .AddTransient<ProducerService>()
-    .AddTransient<ConsumerService>()
+    .AddTransient<HelloWorldClient>()
+    .AddTransient<HelloWorldService>()
     .AddHostedService<Worker>();
 
 IHost host = builder.Build();

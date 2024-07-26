@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AkriAspireDemo.AkriHelloWorld\AkriAspireDemo.AkriHelloWorld.csproj" />
     <ProjectReference Include="..\AkriAspireDemo.ServiceDefaults\AkriAspireDemo.ServiceDefaults.csproj" />
   </ItemGroup>
 

@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 builder.AddRedisOutputCache("cache");
 
+builder.Services.AddSingleton(MqttSessionClientFactoryProvider.MqttSessionClientFactory);
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -17,6 +19,8 @@ builder.Services.AddHttpClient<WeatherApiClient>(client =>
         // Learn more about service discovery scheme resolution at https://aka.ms/dotnet/sdschemes.
         client.BaseAddress = new("https+http://apiservice");
     });
+
+
 
 var app = builder.Build();
 

@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AkriAspireDemo.AkriHelloWorld\AkriAspireDemo.AkriHelloWorld.csproj" />
     <ProjectReference Include="..\AkriAspireDemo.ApiService\AkriAspireDemo.ApiService.csproj" />
-    <ProjectReference Include="..\AkriAspireDemo.RpcServer\AkriAspireDemo.RpcServer.csproj" />
     <ProjectReference Include="..\AkriAspireDemo.Web\AkriAspireDemo.Web.csproj" />
   </ItemGroup>
 
