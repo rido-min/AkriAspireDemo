@@ -1,5 +1,29 @@
-﻿<h3>mRpcHelloWorld</h3>
+﻿@page "/akrihw"
+@attribute [StreamRendering(true)]
+@attribute [OutputCache(Duration = 5)]
+
+@inject AkriHelloWorldClient akriClient
+
+<PageTitle>AkriHelloWorldClient</PageTitle>
+
+<h1>AkriHelloWorldClient</h1>
+
+<p>This component demonstrates showing data loaded from a backend MQTT API service.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @forecasts
+}
 
 @code {
+    private string? forecasts;
 
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await akriClient.HiRido();
+    }
 }

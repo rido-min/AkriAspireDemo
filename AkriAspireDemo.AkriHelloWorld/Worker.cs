@@ -11,17 +11,15 @@ public class Worker(MqttSessionClient mqttClient, IServiceProvider provider, ILo
     {
         await ConnectAsync(stoppingToken);
 
-        HelloWorldClient client = provider.GetService<HelloWorldClient>()!;
-        await client.StartAsync(stoppingToken);
-
+        
         HelloWorldService service = provider.GetService<HelloWorldService>()!;
         await service.StartAsync(null, stoppingToken);
 
-        while (!stoppingToken.IsCancellationRequested)
-        {
-            await client.HelloAsync(mqttClient.ClientId, new HelloCommandRequest { HelloRequest = "World" }, null, null, stoppingToken);
-            await Task.Delay(5000, stoppingToken);
-        }
+        //while (!stoppingToken.IsCancellationRequested)
+        //{
+        //    await client.HelloAsync(mqttClient.ClientId, new HelloCommandRequest { HelloRequest = "World" }, null, null, stoppingToken);
+        //    await Task.Delay(5000, stoppingToken);
+        //}
     }
 
     private async Task ConnectAsync(CancellationToken stoppingToken)
